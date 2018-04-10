@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>vue-tiny-lazyload-img</title>
+
+    <% for (var chunk in htmlWebpackPlugin.files.css) { %>
+      <link rel="preload" href="<%= htmlWebpackPlugin.files.css[chunk] %>"  as="style">
+    <% } %>
+
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+      <!-- <% if(chunk.indexOf('runtime') == -1){ %> -->
+        <link rel="preload" href="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" as="script">
+      <!-- <% } %> -->
+    <% } %>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="dist/main.js"></script>
+  </body>
+</html>
