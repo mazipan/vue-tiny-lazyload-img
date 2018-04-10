@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const InlineChunkWebpackPlugin = require('html-webpack-inline-chunk-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const SRC = path.resolve(__dirname, "src");
 const DIST = path.resolve(__dirname, "dist");
@@ -137,6 +138,9 @@ module.exports = {
     })
 	]).concat(ENV === 'production' ? [
     new webpack.HashedModuleIdsPlugin(),
+    new CopyWebpackPlugin([
+			{ from: './assets', to: './assets' }
+    ]),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
