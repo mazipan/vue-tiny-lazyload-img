@@ -3,6 +3,8 @@ var webpack = require('webpack')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const InlineChunkWebpackPlugin = require('html-webpack-inline-chunk-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 const SRC = path.resolve(__dirname, "src");
 const DIST = path.resolve(__dirname, "dist");
@@ -16,7 +18,7 @@ module.exports = {
   },
   output: {
 		path: DIST,
-		publicPath: '/',
+		publicPath: '/vue-tiny-lazyload-img/',
     filename: '[name].js'
   },
   module: {
@@ -24,7 +26,6 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        exclude: /node_modules/,
         options: {
           loaders: {
             css: ExtractTextPlugin.extract({
@@ -39,8 +40,6 @@ module.exports = {
               use: 'css-loader!sass-loader?indentedSyntax',
               fallback: 'vue-style-loader'
             })
-            // scss: 'vue-style-loader!css-loader!sass-loader',
-            // sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
           }
         }
       },
@@ -49,26 +48,36 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000
-        }
+			{
+				test: /\.json$/,
+				use: 'json-loader'
+			},
+			{
+				test: /\.(xml|html|txt|md)$/,
+				use: 'raw-loader'
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        test: /\.(jpe?g|png|gif)$/,
         loader: 'url-loader',
         options: {
-          limit: 10000
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024,
         }
       },
+			{
+				test: /\.(svg|woff2?|ttf|eot)(\?.*)?$/i,
+				use: ENV === 'production' ? 'file-loader' : 'url-loader'
+      },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.svg$/,
+        loader: 'svg-url-loader',
         options: {
-          limit: 10000
-        }
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024,
+          // Remove the quotes from the url
+          // (they’re unnecessary in most cases)
+          noquotes: true,
+        },
       }
     ]
   },
@@ -148,14 +157,19 @@ module.exports = {
       // will be included into this chunk
       minChunks: Infinity,
     }),
+    new InlineChunkWebpackPlugin({
+      inlineChunks: ['runtime']
+    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
         warnings: false
       }
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
     }),
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',
@@ -170,10 +184,20 @@ module.exports = {
   devServer: {
 		port: process.env.PORT || 8089,
 		host: 'localhost',
-		publicPath: '/',
+		publicPath: '/vue-tiny-lazyload-img/',
 		contentBase: './src',
 		historyApiFallback: true,
-		open: true
+		open: true,
+		openPage: 'vue-tiny-lazyload-img/',
+		proxy: {
+			'/vue-tiny-lazyload-img': {
+				target: "http://localhost:8089",
+				bypass: (req) => {
+					let view = req.url.replace('/vue-tiny-lazyload-img', '');
+					return view;
+				}
+			}
+		}
   }
 }
 

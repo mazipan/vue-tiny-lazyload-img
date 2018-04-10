@@ -10,7 +10,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.config.dev.js",
     "pack": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "dist": "npm run build && npm run pack",
-    "test": "./node_modules/.bin/jest --coverage"
+    "test": "./node_modules/.bin/jest --coverage",
+    "publish": "node ./gh-publish.js"
   },
   "dependencies": {
     "vue": "^2.5.16"
@@ -31,9 +32,13 @@
     "eslint": "^4.19.1",
     "eslint-plugin-vue": "4.4.0",
     "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "^1.1.11",
     "compression-webpack-plugin": "^1.1.11",
+    "html-webpack-inline-chunk-plugin": "1.1.1",
+    "optimize-css-assets-webpack-plugin": "3.2.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.4.3",
+    "gh-pages": "1.1.0",
     "vue-jest": "^2.4.1",
     "node-sass": "^4.8.3",
     "sass-loader": "^6.0.7",
@@ -41,6 +46,10 @@
     "postcss-loader": "^2.1.3",
     "postcss-url": "^7.3.2",
     "url-loader": "1.0.1",
+    "raw-loader": "^0.5.1",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.20.3",
+    "svg-url-loader": "2.3.2",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.16",
     "vue-test-utils":"^1.0.0-beta.11",
