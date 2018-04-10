@@ -6,7 +6,25 @@
 
 ## Please Use polyfill
 
-https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+This plugin using `IntersectionObserver`, so please use polyfill if you need support old browser https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+
+## Usage
+
+### Install Plugin
+
+```js
+import tinyLazyLoad from 'vue-tiny-lazyload-img'
+Vue.use(tinyLazyLoad);
+```
+
+### HTML Snippet
+
+```html
+<img v-lazyload
+     src="./assets/logo.png"
+     data-src="./assets/logo-success.png"
+     data-err="./assets/logo-error.png">
+```
 
 ## Build Setup
 
