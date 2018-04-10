@@ -21,7 +21,7 @@
           v-lazyload
           class="lazy"
           src="/vue-tiny-lazyload-img/assets/placeholder.png"
-          data-src="https://picsum.photos/200/200/?random"
+          :data-src="'https://picsum.photos/350/350/?image=' + img"
           data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
 
       <img
@@ -46,7 +46,7 @@
           v-lazyload
           class="lazy"
           src="/vue-tiny-lazyload-img/assets/placeholder.png"
-          data-src="https://picsum.photos/200/200/?random"
+          :data-src="'https://picsum.photos/350/350/?image=' + (img+21)"
           data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
 
     </main>
@@ -123,5 +123,7 @@ h1 {
   display: block;
   margin: 1em auto;
   text-align: center;
+  width: 350px;
+  height: 350px;
 }
 </style>
