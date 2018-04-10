@@ -4,11 +4,17 @@
 
 :rocket: Skeleton generated with Vue-CLI using template [vuejs-template-plugin](https://github.com/mazipan/vuejs-template-plugin)
 
-## Please Use polyfill
+## Demo Page
 
-This plugin using `IntersectionObserver`, so please use polyfill if you need support old browser https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+https://mazipan.github.io/vue-tiny-lazyload-img/
 
 ## Usage
+
+### Download
+
+```js
+npm install vue-tiny-lazyload-img
+```
 
 ### Install Plugin
 
@@ -25,6 +31,10 @@ Vue.use(tinyLazyLoad);
      data-src="./assets/logo-success.png"
      data-err="./assets/logo-error.png">
 ```
+
+## Please Use polyfill
+
+This plugin using `IntersectionObserver`, so please use polyfill if you need support old browser https://github.com/w3c/IntersectionObserver/tree/master/polyfill
 
 ## Build Setup
 

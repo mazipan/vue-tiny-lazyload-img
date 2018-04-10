@@ -20,9 +20,9 @@
           :key="img"
           v-lazyload
           class="lazy"
-          src="./assets/logo.png"
-          data-src="./assets/logo-success.png"
-          data-err="./assets/logo-error.png">
+          src="/vue-tiny-lazyload-img/assets/logo.png"
+          data-src="/vue-tiny-lazyload-img/assets/logo-success.png"
+          data-err="/vue-tiny-lazyload-img/assets/logo-error.png">
 
     </main>
 
