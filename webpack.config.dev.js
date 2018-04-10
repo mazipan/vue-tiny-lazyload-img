@@ -6,6 +6,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const InlineChunkWebpackPlugin = require('html-webpack-inline-chunk-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const SRC = path.resolve(__dirname, "src");
 const DIST = path.resolve(__dirname, "dist");
@@ -112,7 +113,8 @@ module.exports = {
 		new webpack.NoEmitOnErrorsPlugin(),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(ENV)
-		}),
+    }),
+    new CleanWebpackPlugin('dist', {}),
 		new ExtractTextPlugin({
 			filename: '[name].css',
 			allChunks: true,

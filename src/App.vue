@@ -20,9 +20,34 @@
           :key="img"
           v-lazyload
           class="lazy"
-          src="/vue-tiny-lazyload-img/assets/logo.png"
-          data-src="/vue-tiny-lazyload-img/assets/logo-success.png"
-          data-err="/vue-tiny-lazyload-img/assets/logo-error.png">
+          src="/vue-tiny-lazyload-img/assets/placeholder.png"
+          data-src="https://picsum.photos/200/200/?random"
+          data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
+
+      <img
+          v-lazyload
+          class="lazy"
+          src="/vue-tiny-lazyload-img/assets/placeholder.png"
+          data-src="/vue-tiny-lazyload-img/assets/logo-404.png"
+          data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
+
+
+      <img
+          v-lazyload
+          class="lazy"
+          src="/vue-tiny-lazyload-img/assets/placeholder.png"
+          data-src="/vue-tiny-lazyload-img/assets/logo-404.png"
+          data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
+
+
+      <img
+          v-for="img in images"
+          :key="img"
+          v-lazyload
+          class="lazy"
+          src="/vue-tiny-lazyload-img/assets/placeholder.png"
+          data-src="https://picsum.photos/200/200/?random"
+          data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
 
     </main>
 

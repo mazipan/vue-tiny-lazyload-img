@@ -55,6 +55,7 @@
     "eslint": "^4.19.1",
     "eslint-plugin-vue": "4.4.0",
     "extract-text-webpack-plugin": "3.0.2",
+    "clean-webpack-plugin": "0.1.19",
     "file-loader": "^1.1.11",
     "copy-webpack-plugin": "^4.5.1",
     "compression-webpack-plugin": "^1.1.11",
