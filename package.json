@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "author": "Irfan Maulana <mazipanneh@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "main": "./dist/VueTinyLazyloadImg.dist.js",
   "keywords": [
     "vue 2 lazy load",
