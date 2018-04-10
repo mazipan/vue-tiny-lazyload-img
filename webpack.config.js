@@ -1,19 +1,27 @@
 var path = require('path')
 var webpack = require('webpack')
 var npm = require("./package.json")
-var CompressionPlugin = require("compression-webpack-plugin")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-var projectName = 'vue-tiny-lazyload-img'
-var libraryName = projectName.replace(/[^a-zA-Z0-9]/g, '')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+
+const SRC = path.resolve(__dirname, "src");
+const DIST = path.resolve(__dirname, "dist");
+const ASSETS = path.resolve(__dirname, "src/assets");
+const ENV = process.env.NODE_ENV || 'production';
+const projectName = 'VueTinyLazyloadImg'
 
 module.exports = {
-  entry: './src/plugin.js',
+	context: SRC,
+  entry: {
+    main: './plugin.js'
+  },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: `${libraryName}.dist.js`,
-    library: libraryName,
+		path: DIST,
+    publicPath: '/',
+    filename: `${projectName}.dist.js`,
+    library: `${projectName}`,
     libraryTarget: 'umd',
     umdNamedDefine: true,
     jsonpFunction: 'WebpackJsonp'
@@ -37,8 +45,6 @@ module.exports = {
               use: 'css-loader!sass-loader?indentedSyntax',
               fallback: 'vue-style-loader'
             })
-            // scss: 'vue-style-loader!css-loader!sass-loader',
-            // sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
           }
         }
       },
@@ -47,59 +53,82 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000
-        }
+			{
+				test: /\.json$/,
+				use: 'json-loader'
+			},
+			{
+				test: /\.(xml|html|txt|md)$/,
+				use: 'raw-loader'
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        test: /\.(jpe?g|png|gif)$/,
         loader: 'url-loader',
         options: {
-          limit: 10000
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024,
         }
       },
+			{
+				test: /\.(svg|woff2?|ttf|eot)(\?.*)?$/i,
+				use: ENV === 'production' ? 'file-loader' : 'url-loader'
+      },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.svg$/,
+        loader: 'svg-url-loader',
         options: {
-          limit: 10000
-        }
+          // Inline files smaller than 10 kB (10240 bytes)
+          limit: 10 * 1024,
+          // Remove the quotes from the url
+          // (they’re unnecessary in most cases)
+          noquotes: true,
+        },
       }
     ]
   },
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      'src': path.resolve(__dirname, 'dist'),
-      '@': path.resolve(__dirname, 'dist')
+      '@': SRC,
+      'assets': ASSETS
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
   externals: {
     'vue$': 'vue/dist/vue.esm.js',
   },
-  devtool: '#eval-source-map'
-}
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash].css'
-    }),
+  performance: {
+    hints: false
+  },
+  node: {
+    setImmediate: false,
+    dgram: 'empty',
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    child_process: 'empty'
+  },
+	devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
+  plugins: ([
+		new webpack.NoEmitOnErrorsPlugin(),
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify(ENV)
+		}),
+		new ExtractTextPlugin({
+			filename: '[name].css',
+			allChunks: true,
+			disable: ENV !== 'production'
+    })
+	]).concat(ENV === 'production' ? [
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
         warnings: false
+      }
+    }),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
       }
     }),
     new webpack.LoaderOptionsPlugin({
@@ -108,8 +137,13 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.BannerPlugin({
       banner: `${projectName} v.${npm.version}`
     }),
-    new CompressionPlugin({
-      algorithm: 'gzip'
-    })
-  ])
+    new CompressionWebpackPlugin({
+      asset: '[path].gz[query]',
+      test: new RegExp(/\.(js|css|html)$/),
+      algorithm: 'gzip',
+      // threshold: 10240,
+      // minRatio: 0.8,
+      cache: true
+    }),
+  ] : []),
 }

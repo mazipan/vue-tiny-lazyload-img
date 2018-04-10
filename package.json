@@ -1,10 +1,33 @@
 {
   "name": "vue-tiny-lazyload-img",
   "description": "🐌 A small size Vue.js v.2+ directive for lazy loading images",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "author": "Irfan Maulana <mazipanneh@gmail.com>",
   "license": "MIT",
   "private": true,
+  "main": "./dist/VueTinyLazyloadImg.dist.js",
+  "keywords": [
+    "vue 2 lazy load",
+    "vue lazy load",
+    "vue lazyload",
+    "vue lazyload image"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mazipan/vue-tiny-lazyload-img.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mazipan/vue-tiny-lazyload-img/issues"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 5.0.0"
+  },
+  "files": [
+    "dist/VueTinyLazyloadImg.dist.js",
+    "dist/VueTinyLazyloadImg.dist.js.gz",
+    "dist/VueTinyLazyloadImg.dist.js.map"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --color --open --config webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.config.dev.js",

@@ -19,8 +19,8 @@ npm install vue-tiny-lazyload-img
 ### Install Plugin
 
 ```js
-import tinyLazyLoad from 'vue-tiny-lazyload-img'
-Vue.use(tinyLazyLoad);
+import VueTinyLazyloadImg from 'vue-tiny-lazyload-img'
+Vue.use(VueTinyLazyloadImg);
 ```
 
 ### HTML Snippet
