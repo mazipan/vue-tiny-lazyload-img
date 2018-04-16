@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from '@/App.vue'
 import plugin from '@/plugin'
 
-// add polifyll for IntersectionObserver
+// add polyfill for IntersectionObserver
 require('intersection-observer')
 // use plugin
 Vue.use(plugin);

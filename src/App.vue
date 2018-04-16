@@ -17,7 +17,7 @@
 
       <img
           v-for="img in images"
-          :key="img"
+          :key="'lazy1-'+ img"
           v-lazyload
           class="lazy"
           src="/vue-tiny-lazyload-img/assets/placeholder.png"
@@ -42,7 +42,7 @@
 
       <img
           v-for="img in images"
-          :key="img"
+          :key="'lazy2-'+ img"
           v-lazyload
           class="lazy"
           src="/vue-tiny-lazyload-img/assets/placeholder.png"
