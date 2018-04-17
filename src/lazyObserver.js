@@ -7,8 +7,9 @@ const _V_ERROR = 'v-lazy-error'
 const clearDataSrc = (lazyImage, stateClass) => {
   lazyImage.classList.remove(_V_LOADING)
   lazyImage.classList.add(stateClass)
-  lazyImage.dataset.src = ''
-  lazyImage.dataset.err = ''
+
+  lazyImage.removeAttribute('data-src')
+  lazyImage.removeAttribute('data-err')
 }
 
 if ("IntersectionObserver" in window) {
