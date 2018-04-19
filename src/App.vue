@@ -15,6 +15,17 @@
 
     <main class="content">
 
+      <button @click="openModal" class="btn">Open Modal Box!</button>
+
+      <div class="modal" v-if="modalShow" @click="hideModal">
+        <img
+            v-lazyload
+            class="lazy"
+            src="/vue-tiny-lazyload-img/assets/placeholder.png"
+            :data-src="'https://picsum.photos/350/350/?image=' + indexShow"
+            data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
+      </div>
+
       <img
           v-for="img in images"
           :key="'lazy1-'+ img"
@@ -62,8 +73,25 @@ export default {
   name: "app",
   data() {
     return {
+      modalShow: false,
+      indexShow: 40,
       images: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-    };
+    }
+  },
+  methods: {
+    openModal () {
+      this.modalShow = !this.modalShow
+      if (this.modalShow){
+        if (this.indexShow === 1) {
+          this.indexShow = 40
+        } else {
+          this.indexShow--
+        }
+      }
+    },
+    hideModal () {
+      this.modalShow = false
+    }
   }
 };
 </script>
@@ -125,5 +153,38 @@ h1 {
   text-align: center;
   width: 350px;
   height: 350px;
+}
+.modal{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+}
+.modal img {
+  width: 500px;
+  height: 500px;
+}
+.btn{
+  background: #4dba87;
+  color: #fff;
+  display: inline-block;
+  padding: 13px 20px;
+  outline: none;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25em;
 }
 </style>

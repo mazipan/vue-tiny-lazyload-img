@@ -1,11 +1,8 @@
 let lazyImageObserver = null
 
-const _V_LOADING = 'v-lazy-loading'
-const _V_LOADED = 'v-lazy-loaded'
-const _V_ERROR = 'v-lazy-error'
+import constant from './constant'
 
 const clearDataSrc = (lazyImage, stateClass) => {
-  lazyImage.classList.remove(_V_LOADING)
   lazyImage.classList.add(stateClass)
 
   lazyImage.removeAttribute('data-src')
@@ -17,22 +14,30 @@ if ("IntersectionObserver" in window) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         const lazyImage = entry.target
-        lazyImage.classList.add(_V_LOADING)
+        lazyImage.classList.add(constant._V_LOADING)
 
         const dataSrc = lazyImage.dataset.src;
         const dataErr = lazyImage.dataset.err;
 
         var newImage = new Image()
         newImage.src = dataSrc
-
-        newImage.onerror = function(){
-          lazyImage.src = dataErr
-          clearDataSrc(lazyImage, _V_ERROR)
-        }
-
+        // when success
         newImage.onload = function(){
-          lazyImage.src = dataSrc
-          clearDataSrc(lazyImage, _V_LOADED)
+          lazyImage.classList.remove(constant._V_LOADING)
+
+          if (dataSrc) {
+            lazyImage.src = dataSrc
+            clearDataSrc(lazyImage, constant._V_LOADED)
+          }
+        }
+        // when error
+        newImage.onerror = function(){
+          lazyImage.classList.remove(constant._V_LOADING)
+
+          if (dataErr) {
+            lazyImage.src = dataErr
+            clearDataSrc(lazyImage, constant._V_ERROR)
+          }
         }
 
         lazyImageObserver.unobserve(lazyImage);
