@@ -1,7 +1,7 @@
 {
   "name": "vue-tiny-lazyload-img",
   "description": "🐌 A small size Vue.js v.2+ directive for lazy loading images",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Irfan Maulana <mazipanneh@gmail.com>",
   "license": "MIT",
   "private": false,
