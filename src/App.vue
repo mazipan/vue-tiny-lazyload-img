@@ -15,6 +15,12 @@
 
     <main class="content">
 
+      <InFeedAdsense
+          data-ad-layout-key="-fg+5n+6t-e7+r"
+          data-ad-client="ca-pub-5442972248172818"
+          data-ad-slot="2105028631">
+      </InFeedAdsense>
+
       <button @click="openModal" class="btn">Open Modal Box!</button>
 
       <div class="modal" v-if="modalShow" @click="hideModal">
@@ -35,13 +41,18 @@
           :data-src="'https://picsum.photos/350/350/?image=' + img"
           data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
 
+      <InFeedAdsense
+          data-ad-layout-key="-fg+5n+6t-e7+r"
+          data-ad-client="ca-pub-5442972248172818"
+          data-ad-slot="2105028631">
+      </InFeedAdsense>
+
       <img
           v-lazyload
           class="lazy"
           src="/vue-tiny-lazyload-img/assets/placeholder.png"
           data-src="/vue-tiny-lazyload-img/assets/logo-404.png"
           data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
-
 
       <img
           v-lazyload
@@ -59,6 +70,12 @@
           src="/vue-tiny-lazyload-img/assets/placeholder.png"
           :data-src="'https://picsum.photos/350/350/?image=' + (img+21)"
           data-err="/vue-tiny-lazyload-img/assets/broken-image.jpg">
+
+      <InFeedAdsense
+          data-ad-layout-key="-fg+5n+6t-e7+r"
+          data-ad-client="ca-pub-5442972248172818"
+          data-ad-slot="2105028631">
+      </InFeedAdsense>
 
     </main>
 
