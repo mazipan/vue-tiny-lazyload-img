@@ -3,7 +3,7 @@
 > A small size (1 kB) Vue.js v.2+ directive for lazy loading images
 
 [![License](https://img.shields.io/github/license/mazipan/vue-tiny-lazyload-img.svg?longCache=true)](https://github.com/mazipan/vue-tiny-lazyload-img) [![version](https://img.shields.io/npm/v/vue-tiny-lazyload-img.svg?maxAge=3600)](https://www.npmjs.com/package/vue-tiny-lazyload-img)
-[![downloads](https://img.shields.io/npm/dt/vue-tiny-lazyload-img.svg?maxAge=86400)](https://www.npmjs.com/package/vue-tiny-lazyload-img) [![bundlephobia](https://img.shields.io/badge/bundlesize-1kB-brightgreen.svg?longCache=true)](https://bundlephobia.com/result?p=vue-tiny-lazyload-img)
+[![downloads](https://img.shields.io/npm/dt/vue-tiny-lazyload-img.svg?maxAge=86400)](https://www.npmjs.com/package/vue-tiny-lazyload-img) ![minified](https://badgen.net/bundlephobia/minzip/vue-tiny-lazyload-img)
 
 :rocket: Skeleton generated with Vue-CLI using template [vuejs-template-plugin](https://github.com/mazipan/vuejs-template-plugin)
 
