@@ -4,10 +4,7 @@ branches:
   only:
   - master
 script:
-  - npm run build-demo
-after_script:
-  - npm install -g codecov
-  - codecov
+  - npm run build:demo
 deploy:
   provider: pages
   skip-cleanup: true
