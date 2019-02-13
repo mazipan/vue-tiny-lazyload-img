@@ -6,7 +6,7 @@ import Ads from 'vue-google-adsense'
 // add polyfill for IntersectionObserver
 require('intersection-observer')
 // use plugin
-Vue.use(plugin);
+Vue.use(plugin)
 
 Vue.use(require('vue-script2'))
 
@@ -14,7 +14,7 @@ Vue.use(Ads.Adsense)
 Vue.use(Ads.InArticleAdsense)
 Vue.use(Ads.InFeedAdsense)
 
-new Vue({
+new Vue({ // eslint-disable-line no-new
   el: '#app',
   render: h => h(App)
 })

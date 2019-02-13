@@ -1,6 +1,6 @@
-let lazyImageObserver = null
-
 import constant from './constant'
+
+let lazyImageObserver = null
 
 const clearDataSrc = (lazyImage, stateClass) => {
   lazyImage.classList.add(stateClass)
@@ -9,20 +9,20 @@ const clearDataSrc = (lazyImage, stateClass) => {
   lazyImage.removeAttribute('data-err')
 }
 
-if ("IntersectionObserver" in window) {
+if ('IntersectionObserver' in window) {
   lazyImageObserver = new IntersectionObserver(function (entries, observer) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         const lazyImage = entry.target
         lazyImage.classList.add(constant._V_LOADING)
 
-        const dataSrc = lazyImage.dataset.src;
-        const dataErr = lazyImage.dataset.err;
+        const dataSrc = lazyImage.dataset.src
+        const dataErr = lazyImage.dataset.err
 
         var newImage = new Image()
         newImage.src = dataSrc
         // when success
-        newImage.onload = function(){
+        newImage.onload = function () {
           lazyImage.classList.remove(constant._V_LOADING)
 
           if (dataSrc) {
@@ -31,7 +31,7 @@ if ("IntersectionObserver" in window) {
           }
         }
         // when error
-        newImage.onerror = function(){
+        newImage.onerror = function () {
           lazyImage.classList.remove(constant._V_LOADING)
 
           if (dataErr) {
@@ -40,10 +40,10 @@ if ("IntersectionObserver" in window) {
           }
         }
 
-        lazyImageObserver.unobserve(lazyImage);
+        lazyImageObserver.unobserve(lazyImage)
       }
-    });
-  });
+    })
+  })
 }
 
 export default lazyImageObserver
