@@ -76,7 +76,13 @@ const config = {
     }),
     new CompressionPlugin({
       algorithm: 'gzip'
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/assets',
+        to: 'assets'
+      }
+    ]),
   ],
   module: {
     rules: [
