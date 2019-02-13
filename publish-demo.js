@@ -4,7 +4,7 @@ const TODAY = new Date().toLocaleString();
 
 console.log(`start publishing to ${BRANCH}`);
 
-ghpages.publish('dist', {
+ghpages.publish('dist-demo', {
   branch: BRANCH,
   message: `Merge to ${BRANCH} ==> ${TODAY}`
 }, () => {

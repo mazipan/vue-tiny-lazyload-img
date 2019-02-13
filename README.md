@@ -1,6 +1,6 @@
 # 🐌 vue-tiny-lazyload-img
 
-> A small size (1 kB) Vue.js v.2+ directive for lazy loading images
+> A small size Vue.js directive for lazy loading images using IntersectionObserver API
 
 [![License](https://img.shields.io/github/license/mazipan/vue-tiny-lazyload-img.svg?longCache=true)](https://github.com/mazipan/vue-tiny-lazyload-img) [![version](https://img.shields.io/npm/v/vue-tiny-lazyload-img.svg?maxAge=3600)](https://www.npmjs.com/package/vue-tiny-lazyload-img)
 [![downloads](https://img.shields.io/npm/dt/vue-tiny-lazyload-img.svg?maxAge=86400)](https://www.npmjs.com/package/vue-tiny-lazyload-img) ![minified](https://badgen.net/bundlephobia/minzip/vue-tiny-lazyload-img)

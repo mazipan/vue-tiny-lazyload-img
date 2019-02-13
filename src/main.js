@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import App from '@/App.vue'
-import plugin from '@/plugin'
+import App from './App.vue'
+import plugin from './vue-tiny-lazyload-img'
 import Ads from 'vue-google-adsense'
 
 // add polyfill for IntersectionObserver

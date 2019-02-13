@@ -1,0 +1,19 @@
+language: node_js
+node_js: '8'
+branches:
+  only:
+  - master
+script:
+  - npm run build-demo
+after_script:
+  - npm install -g codecov
+  - codecov
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: dist-demo
+  verbose: true
+  on:
+    branch: master

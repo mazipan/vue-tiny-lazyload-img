@@ -1,4 +1,4 @@
-import lazyImageObserver from '@/lazyObserver'
+import lazyImageObserver from './lazyObserver'
 import constant from './constant'
 
 const plugin = {

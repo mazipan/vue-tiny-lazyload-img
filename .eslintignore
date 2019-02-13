@@ -1,0 +1,3 @@
+*.config*
+dist
+dist-demo
