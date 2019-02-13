@@ -5,8 +5,6 @@
 [![License](https://img.shields.io/github/license/mazipan/vue-tiny-lazyload-img.svg?longCache=true)](https://github.com/mazipan/vue-tiny-lazyload-img) [![version](https://img.shields.io/npm/v/vue-tiny-lazyload-img.svg?maxAge=3600)](https://www.npmjs.com/package/vue-tiny-lazyload-img)
 [![downloads](https://img.shields.io/npm/dt/vue-tiny-lazyload-img.svg?maxAge=86400)](https://www.npmjs.com/package/vue-tiny-lazyload-img) ![minified](https://badgen.net/bundlephobia/minzip/vue-tiny-lazyload-img)
 
-:rocket: Skeleton generated with Vue-CLI using template [vuejs-template-plugin](https://github.com/mazipan/vuejs-template-plugin)
-
 ## Demo Page
 
 https://mazipan.github.io/vue-tiny-lazyload-img/
@@ -17,6 +15,8 @@ https://mazipan.github.io/vue-tiny-lazyload-img/
 
 ```js
 npm install vue-tiny-lazyload-img
+// OR
+yarn add intersection-observer
 ```
 
 ### Install Plugin
@@ -30,14 +30,21 @@ Vue.use(VueTinyLazyloadImg);
 
 ```html
 <img v-lazyload
-     src="./assets/logo.png"
-     data-src="./assets/logo-success.png"
-     data-err="./assets/logo-error.png">
+  src="./assets/logo.png"
+  data-src="./assets/logo-success.png"
+  data-err="./assets/logo-error.png">
 ```
 
 ## Please Use polyfill
 
 This plugin using `IntersectionObserver`, so please use polyfill if you need support old browser https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+
+```js
+$ yarn add intersection-observer
+
+// then add polyfill for IntersectionObserver in your main app
+require('intersection-observer')
+```
 
 ## Build Setup
 
@@ -49,21 +56,17 @@ npm install
 npm run dev
 
 # build for production demo with minification
-npm run build
+npm run build:demo
 
 # build for plugin distribution file
-npm run pack
-
-# run build and pack
-npm run dist
+npm run build:lib
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Credit
 
 Based on this awesome article: https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/
 
+---
 
 Copyright © 2018 Built with ❤️ by Irfan Maulana
 
