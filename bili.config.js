@@ -1,7 +1,11 @@
 module.exports = {
   output: {
-    format: ['umd', 'es', 'cjs', 'umd-min', 'iife'],
-    moduleName: 'VueTinyLazyloadImg',
+    format: [
+      'cjs-min',
+      'es-min',
+      'umd-min'
+    ],
+    moduleName: 'VueTinyLazyloadImg'
   },
   input: './src/vue-tiny-lazyload-img.js',
   externals: ['vue'],
