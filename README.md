@@ -37,13 +37,21 @@ Vue.use(VueTinyLazyloadImg);
 
 ## Please Use polyfill
 
-This plugin using `IntersectionObserver`, so please use polyfill if you need support old browser https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+This plugin using `IntersectionObserver`, so please use polyfill if you need support old browser 
+
++ Using polifyll by [@philipwalton](https://github.com/philipwalton)
 
 ```js
 $ yarn add intersection-observer
 
 // then add polyfill for IntersectionObserver in your main app
 require('intersection-observer')
+```
+
++ The easiest way to load the IntersectionObserver polyfill and have it work in the widest range of browsers is via [polyfill.io](https://cdn.polyfill.io/v2/docs/), which will automatically include dependencies where necessary: 
+
+```html
+<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
 ```
 
 ## Build Setup
