@@ -1,10 +1,11 @@
+// add polyfill for IntersectionObserver
+require('intersection-observer')
+
 import Vue from 'vue'
 import App from './App.vue'
 import plugin from './vue-tiny-lazyload-img'
 import Ads from 'vue-google-adsense'
 
-// add polyfill for IntersectionObserver
-require('intersection-observer')
 // use plugin
 Vue.use(plugin)
 
