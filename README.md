@@ -39,7 +39,7 @@ Vue.use(VueTinyLazyloadImg);
 
 This plugin using `IntersectionObserver`, so please use polyfill if you need support old browser 
 
-+ Using polifyll by [@philipwalton](https://github.com/philipwalton)
++ Using polyfill by [@philipwalton](https://github.com/philipwalton)
 
 ```js
 $ yarn add intersection-observer
