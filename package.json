@@ -75,7 +75,7 @@
     "jest-serializer-vue": "^2.0.2",
     "node-sass": "^4.11.0",
     "rollup-plugin-vue": "^4.7.1",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^8.0.0",
     "vue-jest": "^3.0.3",
     "vue-loader": "^15.6.2",
     "vue-script2": "^2.0.3",
