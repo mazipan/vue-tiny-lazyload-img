@@ -58,7 +58,7 @@
     "babel-loader": "^8.0.5",
     "bili": "^4.2.5",
     "compression-webpack-plugin": "^2.0.0",
-    "copy-webpack-plugin": "4.6.0",
+    "copy-webpack-plugin": "5.1.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.13.0",
